@@ -26,22 +26,27 @@
     </div>
 
     <div class="blog-thread">
-      <article class="post">
-        <h3>Conference bingo</h3>
-        <div class="date">Lorem ipsum</div>
+      <article class="post" data-date="2024-07">
+        <h3>Joke 1</h3>
+        <div class="date">Jul 2024</div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget vestibulum ipsum.</p>
       </article>
 
-      <article class="post">
-        <h3>Reviewer 2 appreciation minute</h3>
-        <div class="date">Lorem ipsum</div>
+      <article class="post" data-date="2024-05">
+        <h3>Joke 2</h3>
+        <div class="date">May 2024</div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum sapien in magna volutpat feugiat.</p>
       </article>
     </div>
-
-    <footer>
-      <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-    </footer>
   </div>
+  <script>
+    (() => {
+      const container = document.querySelector(".blog-thread");
+      if (!container) return;
+      const posts = Array.from(container.children);
+      posts.sort((a, b) => (b.dataset.date || "").localeCompare(a.dataset.date || ""));
+      posts.forEach((post) => container.appendChild(post));
+    })();
+  </script>
 </body>
 </html>

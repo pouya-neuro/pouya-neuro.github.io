@@ -175,6 +175,67 @@ nav {
   margin-bottom: 8px;
 }
 
+.date {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.chapter-loader {
+  margin: 10px 0;
+}
+
+.post.error {
+  border: 1px dashed var(--border);
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+/* Collapsible chapters */
+details.post {
+  padding: 0;
+}
+
+details.post summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 14px 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+details.post summary::-webkit-details-marker {
+  display: none;
+}
+
+details.post summary::after {
+  content: "▸";
+  float: right;
+  color: var(--muted);
+  transition: transform 140ms ease;
+}
+
+details.post[open] summary::after {
+  transform: rotate(90deg);
+}
+
+.post-body {
+  padding: 0 16px 16px;
+}
+
+.post.chapter {
+  margin-bottom: 12px;
+}
+
+.chapter-loader {
+  margin: 10px 0;
+}
+
+.post.error {
+  border: 1px dashed var(--border);
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
 footer {
   margin-top: 36px;
   padding-top: 18px;

@@ -26,26 +26,27 @@
     </div>
 
     <div class="content">
-      <h2>Planned sub-pages</h2>
+      <h2>Assessments</h2>
       <ul class="list">
-        <li>Lorem ipsum dolor</li>
-        <li>Sit amet consectetur</li>
-        <li>Adipiscing elit</li>
-        <li>Integer feugiat justo</li>
-      </ul>
-
-      <h2>How I'll structure each page</h2>
-      <ul class="list">
-        <li><strong>Lorem ipsum:</strong> Dolor sit amet.</li>
-        <li><strong>Curabitur vel:</strong> Ante id massa volutpat blandit.</li>
-        <li><strong>Donec posuere:</strong> Leo et sapien sodales, vitae imperdiet lacus interdum.</li>
-        <li><strong>Vestibulum:</strong> Malesuada nisl in, convallis velit.</li>
+        <li data-date="2026-02">
+          <div><strong>Mark Solms' affect as the hidden spring </strong></div>
+          <div class="meta"><span class="date">Feb 2026</span> — Coming soon.</div>
+        </li>
+        <li data-date="2026-03">
+          <div><strong>Anil Seth's controlled hallucination</strong></div>
+          <div class="meta"><span class="date">March 2026</span> — Coming soon.</div>
+        </li>
       </ul>
     </div>
-
-    <footer>
-      <div>Check back soon for the first full write-up.</div>
-    </footer>
   </div>
+  <script>
+    (() => {
+      const list = document.querySelector(".content ul.list");
+      if (!list) return;
+      const items = Array.from(list.children);
+      items.sort((a, b) => (b.dataset.date || "").localeCompare(a.dataset.date || ""));
+      items.forEach((item) => list.appendChild(item));
+    })();
+  </script>
 </body>
 </html>

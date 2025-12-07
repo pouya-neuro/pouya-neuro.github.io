@@ -26,12 +26,21 @@
     <div class="content">
       <h2>Journal articles</h2>
       <ul class="list">
-        <li>
+        <li data-date="2022-04">
           <div><strong>Arbaciauskaite, S., et al.</strong> (2022). <em>Self-Sampled Gargle Water Direct RT-LAMP as a Screening Method for the Detection of SARS-CoV-2 Infections.</em> <span class="meta">Diagnostics, 12(4), 775.</span></div>
-          <div class="meta">DOI: <a href="https://doi.org/10.3390/diagnostics12040775">https://doi.org/10.3390/diagnostics12040775</a></div>
+          <div class="meta"><span class="date">Apr 2022</span> · DOI: <a href="https://doi.org/10.3390/diagnostics12040775">https://doi.org/10.3390/diagnostics12040775</a></div>
         </li>
       </ul>
     </div>
   </div>
+  <script>
+    (() => {
+      const list = document.querySelector(".content ul.list");
+      if (!list) return;
+      const items = Array.from(list.children);
+      items.sort((a, b) => (b.dataset.date || "").localeCompare(a.dataset.date || ""));
+      items.forEach((item) => list.appendChild(item));
+    })();
+  </script>
 </body>
 </html>

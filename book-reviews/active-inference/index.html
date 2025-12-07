@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Active Inference — Review | Pouya Babakhani</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">Pouya Babakhani</div>
+      <nav>
+        <a class="tab" href="../../index.html">Home</a>
+        <a class="tab" href="../index.html">Book reviews</a>
+        <a class="tab" href="../../consciousness-theories/index.html">Consciousness theories</a>
+        <a class="tab" href="../../humour/index.html">Humour</a>
+        <a class="tab" href="../../publications/index.html">Publications</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <h1>Active Inference</h1>
+      <p>Thomas Parr, Giovanni Pezzulo and Karl J. Friston | 2022</p>
+      <p class="meta">The Free Energy Principle in Mind, Brain and Behaviour</p>
+    </div>
+
+    <div class="content">
+      <h2>Short review</h2>
+      <p>Write a brief overview of the book and your main impression.</p>
+
+      <h2>Longer review</h2>
+      <p>Add the deeper dive here.</p>
+
+      <h2>Highlights</h2>
+      <ul class="list">
+        <li><strong>Highlight 1:</strong> Placeholder text.</li>
+        <li><strong>Highlight 2:</strong> Placeholder text.</li>
+        <li><strong>Highlight 3:</strong> Placeholder text.</li>
+      </ul>
+
+      <h2>Chapter summaries</h2>
+      <div id="chapter-loader" class="meta chapter-loader">Loading chapters...</div>
+      <div id="chapters" class="blog-thread" aria-live="polite"></div>
+    </div>
+
+    <footer>
+      <div>Back to <a href="../index.html">Book reviews</a></div>
+    </footer>
+  </div>
+
+  <script>
+    (() => {
+      // Add chapter filenames here, e.g., "chapter-01.html"
+      const chapters = [];
+
+      const container = document.getElementById("chapters");
+      const loader = document.getElementById("chapter-loader");
+      const basePath = "chapters/";
+
+      const parseChapter = (html) => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
+        return doc.querySelector(".post") || doc.body || doc.documentElement;
+      };
+
+      const appendChapter = (html) => {
+        const source = parseChapter(html).cloneNode(true);
+
+        const title = source.querySelector("h3");
+        const summaryText = title ? title.textContent.trim() : "Chapter";
+        if (title) title.remove();
+
+        const body = document.createElement("div");
+        body.className = "post-body";
+        while (source.firstChild) {
+          body.appendChild(source.firstChild);
+        }
+
+        const details = document.createElement("details");
+        details.className = "post chapter";
+
+        const summary = document.createElement("summary");
+        summary.textContent = summaryText;
+
+        details.append(summary, body);
+        container.appendChild(details);
+      };
+
+      const appendError = (file) => {
+        const fallback = document.createElement("div");
+        fallback.className = "post error";
+        fallback.textContent = `Could not load ${file}`;
+        container.appendChild(fallback);
+      };
+
+      (async () => {
+        for (const file of chapters) {
+          try {
+            const response = await fetch(`${basePath}${file}`);
+            if (!response.ok) throw new Error("Network response was not ok");
+            const html = await response.text();
+            appendChapter(html);
+          } catch (error) {
+            appendError(file);
+          }
+        }
+        if (loader) loader.remove();
+      })();
+    })();
+  </script>
+</body>
+</html>

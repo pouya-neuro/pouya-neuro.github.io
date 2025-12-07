@@ -25,21 +25,30 @@
     </div>
 
     <div class="content">
-      <h2>Latest</h2>
       <ul class="list">
-        <li>
-          <div><a href="theory-and-reality.html">Theory and Reality — Peter Godfrey-Smith (2nd ed.)</a></div>
-          <div class="meta">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        <li data-date="2026-01">
+          <div><a href="active-inference/index.html">Active Inference — Thomas Parr et al.</a></div>
+          <div class="meta"><span class="date">Jan 2026</span></div>
+        </li>
+        <li data-date="2024-07">
+          <div><a href="theory-and-reality/index.html">Theory and Reality — Peter Godfrey-Smith (2nd ed.)</a></div>
+          <div class="meta"><span class="date">Dec 2025</span></div>
         </li>
       </ul>
-
-      <h2>Coming soon</h2>
-      <p class="meta">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
 
     <footer>
       <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
     </footer>
   </div>
+  <script>
+    (() => {
+      const list = document.querySelector(".content ul.list");
+      if (!list) return;
+      const items = Array.from(list.children);
+      items.sort((a, b) => (b.dataset.date || "").localeCompare(a.dataset.date || ""));
+      items.forEach((item) => list.appendChild(item));
+    })();
+  </script>
 </body>
 </html>
