@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Reviews | Pouya Babakhani</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">Pouya Babakhani</div>
+      <nav>
+        <a class="tab" href="../index.html">Home</a>
+        <a class="tab" href="index.html">Book reviews</a>
+        <a class="tab" href="../consciousness-theories/index.html">Consciousness theories</a>
+        <a class="tab" href="../humour/index.html">Humour</a>
+        <a class="tab" href="../publications/index.html">Publications</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <h1>Book reviews</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur euismod vel lectus ut fermentum.</p>
+    </div>
+
+    <div class="content">
+      <ul class="list">
+        <li data-date="2026-01">
+          <div><a href="active-inference/index.html">Active Inference — Thomas Parr et al.</a></div>
+          <div class="meta"><span class="date">Feb 2026</span></div>
+        </li>
+        <li data-date="2024-07">
+          <div><a href="theory-and-reality/index.html">Theory and Reality — Peter Godfrey-Smith (2nd ed.)</a></div>
+          <div class="meta"><span class="date">Jan 2026</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <footer>
+      <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+    </footer>
+  </div>
+  <script>
+    (() => {
+      const list = document.querySelector(".content ul.list");
+      if (!list) return;
+      const items = Array.from(list.children);
+      items.sort((a, b) => (b.dataset.date || "").localeCompare(a.dataset.date || ""));
+      items.forEach((item) => list.appendChild(item));
+    })();
+  </script>
+</body>
+</html>

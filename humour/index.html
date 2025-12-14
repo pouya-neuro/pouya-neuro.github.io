@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Humour | Pouya Babakhani</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">Pouya Babakhani</div>
+      <nav>
+        <a class="tab" href="../index.html">Home</a>
+        <a class="tab" href="../book-reviews/index.html">Book reviews</a>
+        <a class="tab" href="../consciousness-theories/index.html">Consciousness theories</a>
+        <a class="tab" href="index.html">Humour</a>
+        <a class="tab" href="../publications/index.html">Publications</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <h1>Humour</h1>
+      <p>Will add jokes once some work is done.</p>
+    </div>
+
+    <div class="blog-thread">
+      <article class="post" data-date="2024-07">
+        <h3>Joke 1</h3>
+        <div class="date">Feb 2026</div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget vestibulum ipsum.</p>
+      </article>
+
+      <article class="post" data-date="2024-05">
+        <h3>Joke 2</h3>
+        <div class="date">March 2026</div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum sapien in magna volutpat feugiat.</p>
+      </article>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const container = document.querySelector(".blog-thread");
+      if (!container) return;
+      const posts = Array.from(container.children);
+      posts.sort((a, b) => (b.dataset.date || "").localeCompare(a.dataset.date || ""));
+      posts.forEach((post) => container.appendChild(post));
+    })();
+  </script>
+</body>
+</html>

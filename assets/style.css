@@ -1,0 +1,250 @@
+/* Simple, readable styling for the site */
+:root {
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --accent: #2b5cd9;
+  --accent-soft: #eef2ff;
+  --text: #1f2a44;
+  --muted: #5c6475;
+  --border: #d9deeb;
+  --shadow: 0 10px 30px rgba(31, 42, 68, 0.08);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 0 10px;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.tab:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(31, 42, 68, 0.12);
+  text-decoration: none;
+}
+
+.hero {
+  margin: 26px 0 18px;
+  padding: 24px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #fdfdff, #eef2ff);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.hero h1 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 32px;
+}
+
+.hero p {
+  margin: 6px 0;
+  color: var(--muted);
+  max-width: 760px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.card p {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+.list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.list li:last-child {
+  border-bottom: none;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.content {
+  background: var(--card);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+
+.content h2:first-child {
+  margin-top: 0;
+}
+
+.blog-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.post {
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.post h3 {
+  margin: 0 0 6px;
+}
+
+.post .date {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.date {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.chapter-loader {
+  margin: 10px 0;
+}
+
+.post.error {
+  border: 1px dashed var(--border);
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+/* Collapsible chapters */
+details.post {
+  padding: 0;
+}
+
+details.post summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 14px 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+details.post summary::-webkit-details-marker {
+  display: none;
+}
+
+details.post summary::after {
+  content: "▸";
+  float: right;
+  color: var(--muted);
+  transition: transform 140ms ease;
+}
+
+details.post[open] summary::after {
+  transform: rotate(90deg);
+}
+
+.post-body {
+  padding: 0 16px 16px;
+}
+
+.post.chapter {
+  margin-bottom: 12px;
+}
+
+.chapter-loader {
+  margin: 10px 0;
+}
+
+.post.error {
+  border: 1px dashed var(--border);
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+footer {
+  margin-top: 36px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 26px;
+  }
+}

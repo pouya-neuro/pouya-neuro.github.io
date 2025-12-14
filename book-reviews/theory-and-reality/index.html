@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theory and Reality — Review | Pouya Babakhani</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">Pouya Babakhani</div>
+      <nav>
+        <a class="tab" href="../../index.html">Home</a>
+        <a class="tab" href="../index.html">Book reviews</a>
+        <a class="tab" href="../../consciousness-theories/index.html">Consciousness theories</a>
+        <a class="tab" href="../../humour/index.html">Humour</a>
+        <a class="tab" href="../../publications/index.html">Publications</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <h1>Theory and Reality (2nd ed.)</h1>
+      <p>Peter Godfrey-Smith | 2021 </p>
+      <p class="meta">An introduction to <em>the</em> Philosophy of Science</p>
+    </div>
+
+    <div class="content">
+      <h2>Short review</h2>
+      <p>As someone with little background in the philosophy of science, I found this book very readible and informative of the broad ideas philosophers have had about what science
+         is and how it should work. If you are pursuing a career in science, it seems like a no-brainer to have an overview of the 
+         scientific enterprise at large, and of some of the major epistemic issues faced in science, e.g. relating to induction, evidence, and belief, all of which this book 
+         approaches with clear language and plenty of examples. I really appreciate that Godfrey-Smith avoided <em>sesquipedalianism</em> (unlike myself) and dense language; generally, what he means 
+         seems quite clear. 
+      </p>
+
+      <h2>Longer review</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat nisl sem, vitae porttitor mauris elementum at.</p>
+
+      <h2>Highlights</h2>
+      <ul class="list">
+        <li><strong>Lorem ipsum:</strong> Dolor sit amet, consectetur adipiscing elit.</li>
+        <li><strong>Curabitur varius:</strong> Nunc ut sapien mattis, luctus massa a, condimentum arcu.</li>
+        <li><strong>Vestibulum augue:</strong> Integer in mauris eget metus scelerisque mollis.</li>
+      </ul>
+
+      <h2>Chapter summaries</h2>
+      <div id="chapter-loader" class="meta chapter-loader">Loading chapters...</div>
+      <div id="chapters" class="blog-thread" aria-live="polite"></div>
+    </div>
+
+    <footer>
+      <div>Back to <a href="../index.html">Book reviews</a></div>
+    </footer>
+  </div>
+
+  <script>
+    (() => {
+      const chapters = [
+        "chapter-01-introduction.html",
+        "chapter-02-empiricism.html",
+        "chapter-03-evidence-and-induction.html",
+        "chapter-04-popper.html",
+        "chapter-05-kuhn.html",
+        "chapter-06-theories-and-frameworks.html",
+        "chapter-07-sociology-of-science.html",
+        "chapter-08-science-is-political.html",
+        "chapter-09-naturalistic-philosophy.html",
+        "chapter-10-scientific-realism.html",
+        "chapter-11-explanation-laws-and-causes.html",
+        "chapter-12-bayesianism.html",
+        "chapter-13-truth-and-simplicity.html",
+        "chapter-14-the-future.html"
+      ];
+
+      const container = document.getElementById("chapters");
+      const loader = document.getElementById("chapter-loader");
+      const basePath = "chapters/";
+
+      const parseChapter = (html) => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
+        return doc.querySelector(".post") || doc.body || doc.documentElement;
+      };
+
+      const appendChapter = (html) => {
+        const source = parseChapter(html).cloneNode(true);
+
+        const title = source.querySelector("h3");
+        const summaryText = title ? title.textContent.trim() : "Chapter";
+        if (title) title.remove();
+
+        const body = document.createElement("div");
+        body.className = "post-body";
+        while (source.firstChild) {
+          body.appendChild(source.firstChild);
+        }
+
+        const details = document.createElement("details");
+        details.className = "post chapter";
+
+        const summary = document.createElement("summary");
+        summary.textContent = summaryText;
+
+        details.append(summary, body);
+        container.appendChild(details);
+      };
+
+      const appendError = (file) => {
+        const fallback = document.createElement("div");
+        fallback.className = "post error";
+        fallback.textContent = `Could not load ${file}`;
+        container.appendChild(fallback);
+      };
+
+      (async () => {
+        for (const file of chapters) {
+          try {
+            const response = await fetch(`${basePath}${file}`);
+            if (!response.ok) throw new Error("Network response was not ok");
+            const html = await response.text();
+            appendChapter(html);
+          } catch (error) {
+            appendError(file);
+          }
+        }
+        if (loader) loader.remove();
+      })();
+    })();
+  </script>
+</body>
+</html>

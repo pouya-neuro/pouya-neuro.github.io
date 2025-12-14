@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consciousness Theories | Pouya Babakhani</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">Pouya Babakhani</div>
+      <nav>
+        <a class="tab" href="../index.html">Home</a>
+        <a class="tab" href="../book-reviews/index.html">Book reviews</a>
+        <a class="tab" href="index.html">Consciousness theories</a>
+        <a class="tab" href="../humour/index.html">Humour</a>
+        <a class="tab" href="../publications/index.html">Publications</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <h1>Consciousness theories</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p class="meta">Lorem ipsum dolor sit amet.</p>
+    </div>
+
+    <div class="content">
+      <h2>Assessments</h2>
+      <ul class="list">
+        <li data-date="2026-03">
+          <div><strong>Mark Solms' affect as the hidden spring </strong></div>
+          <div class="meta"><span class="date">March 2026</span> — Coming soon.</div>
+        </li>
+        <li data-date="2026-04">
+          <div><strong>Anil Seth's controlled hallucination</strong></div>
+          <div class="meta"><span class="date">April 2026</span> — Coming soon.</div>
+        </li>
+      </ul>
+    </div>
+
+        <div class="content">
+      <h2>Comparisons</h2>
+      <ul class="list">
+        <li data-date="2026-05">
+          <div><strong>Mark Solms vs. Anil Seth </strong></div>
+          <div class="meta"><span class="date">May 2026</span> — Coming soon.</div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  <script>
+    (() => {
+      const list = document.querySelector(".content ul.list");
+      if (!list) return;
+      const items = Array.from(list.children);
+      items.sort((a, b) => (b.dataset.date || "").localeCompare(a.dataset.date || ""));
+      items.forEach((item) => list.appendChild(item));
+    })();
+  </script>
+</body>
+</html>
