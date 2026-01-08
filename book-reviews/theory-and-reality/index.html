@@ -78,6 +78,15 @@
       const container = document.getElementById("chapters");
       const loader = document.getElementById("chapter-loader");
       const basePath = "chapters/";
+      const typesetMath = () => {
+        if (!window.MathJax?.typesetPromise) return;
+        const ready = window.MathJax.startup?.promise || Promise.resolve();
+        ready
+          .then(() => MathJax.typesetPromise([container]))
+          .catch((err) => console.error("MathJax typeset failed", err));
+      };
+
+      window.addEventListener("load", typesetMath);
 
       const parseChapter = (html) => {
         const parser = new DOMParser();
@@ -127,6 +136,7 @@
           }
         }
         if (loader) loader.remove();
+        typesetMath();
       })();
     })();
   </script>
